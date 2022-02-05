@@ -1,5 +1,6 @@
 package com.moviepicker.backend.entity;
 
 public enum Genre {
-    Action
+    Drama, Action, Comedy, Horror, Thriller,
+    Romance, Adventure, Historical, Fantasy, Satire, Musical, International
 }

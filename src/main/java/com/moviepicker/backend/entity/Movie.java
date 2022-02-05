@@ -3,7 +3,9 @@ package com.moviepicker.backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.transaction.TransactionScoped;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,7 +24,10 @@ public class Movie {
     private String title;
 
     @Column(name = "Genre")
-    private Genre genreList;
+    private Genre genre;
+
+    @Column(name = "Summary")
+    private String summary;
 
     private Double rating;
 }
