@@ -3,9 +3,7 @@ package com.moviepicker.backend.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.transaction.TransactionScoped;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Getter
 @Setter

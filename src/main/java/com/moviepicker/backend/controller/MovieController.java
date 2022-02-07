@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -19,7 +20,7 @@ public class MovieController {
 
     @GetMapping("/movies")
     public List<Movie> fetchMovies() {
-        return movieRepository.findAll();
+        return this.movieRepository.findAll();
     }
 
     @GetMapping("/genres")
@@ -31,12 +32,31 @@ public class MovieController {
     public Movie save(@RequestBody Movie updatedMovie) {
         Movie movie = new Movie(updatedMovie.getId(), updatedMovie.getTitle(), updatedMovie.getGenre(), updatedMovie.getSummary(), updatedMovie.getRating());
 
-        return movieRepository.save(movie);
+        return this.movieRepository.save(movie);
+    }
+
+    @PatchMapping("/movies/{movieID}")
+    public void patch(@PathVariable("movieID") int id, @RequestBody Movie movie) {
+        this.movieRepository.findById(id).map(movieEntry -> {
+            movieEntry.setRating(movie.getRating());
+            return this.movieRepository.save(movieEntry);
+        });
+    }
+
+    @PutMapping("/movies/{movieID}")
+    public void put(@PathVariable("movieID") int id, @RequestBody Movie movie) {
+        this.movieRepository.findById(id).map(movieEntry -> {
+            movieEntry.setTitle(movie.getTitle());
+            movieEntry.setSummary(movie.getSummary());
+            movieEntry.setGenre(movie.getGenre());
+            movieEntry.setRating(movie.getRating());
+            return this.movieRepository.save(movieEntry);
+        });
     }
 
     @DeleteMapping("/movies/{movieID}")
     public void delete(@PathVariable("movieID") int id) {
-        movieRepository.deleteById(id);
+        this.movieRepository.deleteById(id);
     }
 
 
