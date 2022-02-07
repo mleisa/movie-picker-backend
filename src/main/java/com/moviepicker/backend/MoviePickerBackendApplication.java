@@ -33,7 +33,7 @@ public class MoviePickerBackendApplication implements CommandLineRunner {
                 .id(2)
                 .title("The Hunger Games 2: Catching Fire")
                 .genre(Genre.Action)
-                .summary("Peeta has it worse than Katniss now but will they live?")
+                .summary("For the third Quarter Quell games, President Snow has especially diabolical plans. Sorry, Peeta.")
                 .rating(5.0)
                 .build();
 
@@ -117,6 +117,14 @@ public class MoviePickerBackendApplication implements CommandLineRunner {
                 .rating(4.5)
                 .build();
 
+        Movie movie13 = Movie.builder()
+                .id(13)
+                .title("Shrek")
+                .genre(Genre.Comedy)
+                .summary("The magical creatures of the fairytale forest quiver in fear as Lord Farquaad threatens their peaceful existence. There is only one hope: the grumpy loner ogre Shrek who lives deep in a swamp.")
+                .rating(5.0)
+                .build();
+
         movieRepository.save(movie1);
         movieRepository.save(movie2);
         movieRepository.save(movie3);
@@ -129,5 +137,6 @@ public class MoviePickerBackendApplication implements CommandLineRunner {
         movieRepository.save(movie10);
         movieRepository.save(movie11);
         movieRepository.save(movie12);
+        movieRepository.save(movie13);
     }
 }
